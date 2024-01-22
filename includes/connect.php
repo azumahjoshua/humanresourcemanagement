@@ -1,8 +1,8 @@
 <?php
 
-$host = "";
-$dbname = '';
-$username = "";
+$host = "localhost";
+$dbname = 'humanresourcemanagement';
+$username = "root";
 $password = "";
 
 try {

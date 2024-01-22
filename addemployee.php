@@ -1,12 +1,13 @@
 <?php 
  include "./header.php";
 ?>
-<?php
- include_once "./sidebar.php";
-?>
-<div class="container mt-5">
-    <h2>Add Employees</h2>
-    <form action="process_add_employee.php" method="post">
+<div class="container-fluid">
+    <div class="row">
+        <?php include_once "./sidebar.php"; ?>
+        <main class="col-md-9 ms-sm-auto px-md-4 mt-5 admindash">
+            <div class="row align-items-center">
+            <h2>Add Employees</h2>
+    <form action="./includes/addemployee.php" method="POST">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="username">Username:</label>
@@ -29,6 +30,12 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="phone_number">Phone Number:</label>
                 <input type="text" class="form-control" id="phone_number" name="phone_number" required>
             </div>
@@ -37,6 +44,7 @@
                 <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
             </div>
         </div>
+
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="hire_date">Hire Date:</label>
@@ -60,6 +68,9 @@
 
         <button type="submit" class="btn btn-primary mt-3">Add Employee</button>
     </form>
+            </div>
+        </main>
+    </div>
 </div>
 <?php
   include "./footer.php"

@@ -3,7 +3,7 @@
 ?>
   <div class="container login-container">
   <h2 class="text-center">Employee Login</h2>
-  <form action="">
+  <form action="../includes/loginemployee.php" method="POST">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username" name="username">

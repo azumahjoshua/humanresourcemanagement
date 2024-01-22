@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $username = validate($_POST['username']);
     $password = validate($_POST['password']);
-
+   
     // Check if $pdo is defined
     if (!isset($pdo)) {
         echo "Error: Database connection not established.";
@@ -37,29 +37,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                       FROM employees
                       JOIN employee_roles ON employees.employee_id = employee_roles.employee_id
                       WHERE employees.username = ?");
+
     $stmt->execute([$username]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+   
     if ($user) {
         if ($password === $user['password']) {
             $role_id = $user['role_id'];
 
-            if ($role_id == 1) {
+            if ($role_id == 2) {
                 $_SESSION['user_id'] = $user['employee_id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['is_admin'] = false;
-                header("Location: ../admindashboard.php");
+                header("Location: ../employees/employeedashboard.php?success");
                 exit();
             } else {
-                header("Location: ../admin.php?error_message=Invalid user role");
+                header("Location: ../employees/index.php?error_message=Invalid user role");
                 exit();
             }
         } else {
-            header("Location: ../admin.php?error_message=Invalid password");
+            header("Location: ../employees/index.php?error_message=Invalid password");
             exit();
         }
     } else {
-        header("Location: ../admin.php?error_message=User not found");
+        header("Location: ../employees/index.php?error_message=User not found");
         exit();
     }
 }
